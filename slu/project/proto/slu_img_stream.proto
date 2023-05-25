@@ -1,0 +1,32 @@
+
+syntax = "proto3";
+
+package sluimgstream;
+
+service SluImgStream {
+  rpc SendImages (ReadyToReceiveImagesRequest) returns (stream ResponseImages) {}
+  rpc ReceiveData (stream ProcessedDataRequest) returns (ResponseDataReceived) {}
+}
+
+
+// Request from python client to c++ server to denote that it is ready to receive images.
+message ReadyToReceiveImagesRequest {
+  bool readyClientFlag = 1;
+}
+
+// Response message containing images from c++ server to python client.
+message ResponseImages {
+  uint32 img_size = 1;
+  bytes img_data = 2;
+}
+
+// Request from python client to c++ server containing processed image data.
+message ProcessedDataRequest {
+  uint32 img_size = 1;
+  bytes img_data = 2;
+}
+
+// Response message from c++ server to python client acknowledging that it has received data.
+message ResponseDataReceived {
+  bool acknowledgeDataReceive = 1;
+}
