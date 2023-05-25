@@ -4,7 +4,7 @@
 #include <vector>
 #include <assert.h>
 
-//#include "helper.h"
+#include "helper.h"
 
 #include <grpc/grpc.h>
 #include <grpcpp/security/server_credentials.h>
@@ -30,7 +30,8 @@ class SluImgStreamImpl final : public SluImgStream::Service
   public :
     explicit SluImgStreamImpl(const std::string& vid_path)
     {
-    	//sluImgStream::ParseVideo(vid_path, response_images_list_);
+    	sluimgstream::ParseVideo(vid_path, &response_images_list1_);
+    	std::cout << "ResponseImageList Size : " << response_images_list1_.size() << std::endl;
     	std::cout << "Initializing SluImgStreamImpl" << std::endl;
     	ResponseImages ri1, ri2, ri3;
     	char ch1[3] = {'a', 'b', 'c'};
@@ -59,13 +60,14 @@ class SluImgStreamImpl final : public SluImgStream::Service
     {
     	if(clientRequest->readyclientflag())
     	{
-    		for(const ResponseImages& ri : response_images_list_)
+    		for(const ResponseImages& ri : response_images_list1_)
     		{
     			writer->Write(ri);
     			response_count_++;
 	    		std::cout << "response count " << response_count_ << std::endl;
     		}
     	}
+	std::cout << "response count : " << response_count_ << std::endl;
     	return Status::OK;
     }
 
@@ -90,6 +92,7 @@ class SluImgStreamImpl final : public SluImgStream::Service
 
   private :
     std::vector<ResponseImages> response_images_list_;
+    std::vector<ResponseImages> response_images_list1_;
     std::vector<ProcessedDataRequest> request_data_list_;
     long request_count_;
     long response_count_;
@@ -132,7 +135,7 @@ int main(int argc, char** argv)
 	/*std::string vid_path = sluImgStream::GetArgVal(argc, argv, "--vid_path");
 	std::string host_name = sluImgStream::GetArgVal(argc, argv, "--hostname");
 	std::string port = sluImgStream::GetArgVal(argc, argv, "--port");*/
-	RunServer("path", "host_name", "port");
+	RunServer("/home/slu/Videos/day_seq4.mp4", "host_name", "port");
 
 	return 0;
 }

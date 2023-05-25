@@ -35,84 +35,67 @@ class SluImgStream final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::sluimgstream::ServerResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ServerResponse>> AsyncPassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ServerResponse>>(AsyncPassDataRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::sluimgstream::ResponseImages>> SendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sluimgstream::ResponseImages>>(SendImagesRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ServerResponse>> PrepareAsyncPassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ServerResponse>>(PrepareAsyncPassDataRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sluimgstream::ResponseImages>> AsyncSendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sluimgstream::ResponseImages>>(AsyncSendImagesRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>> PassImages(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>>(PassImagesRaw(context));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sluimgstream::ResponseImages>> PrepareAsyncSendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sluimgstream::ResponseImages>>(PrepareAsyncSendImagesRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>> AsyncPassImages(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>>(AsyncPassImagesRaw(context, cq, tag));
+    std::unique_ptr< ::grpc::ClientWriterInterface< ::sluimgstream::ProcessedDataRequest>> ReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response) {
+      return std::unique_ptr< ::grpc::ClientWriterInterface< ::sluimgstream::ProcessedDataRequest>>(ReceiveDataRaw(context, response));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>> PrepareAsyncPassImages(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>>(PrepareAsyncPassImagesRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::sluimgstream::ProcessedDataRequest>> AsyncReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::sluimgstream::ProcessedDataRequest>>(AsyncReceiveDataRaw(context, response, cq, tag));
     }
-    virtual ::grpc::Status GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::sluimgstream::ConfirmResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ConfirmResponse>> AsyncGetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ConfirmResponse>>(AsyncGetConnectionRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ConfirmResponse>> PrepareAsyncGetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ConfirmResponse>>(PrepareAsyncGetConnectionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::sluimgstream::ProcessedDataRequest>> PrepareAsyncReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::sluimgstream::ProcessedDataRequest>>(PrepareAsyncReceiveDataRaw(context, response, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void PassImages(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sluimgstream::ResponseImages,::sluimgstream::ResponseImages>* reactor) = 0;
-      virtual void GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest* request, ::grpc::ClientReadReactor< ::sluimgstream::ResponseImages>* reactor) = 0;
+      virtual void ReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::ClientWriteReactor< ::sluimgstream::ProcessedDataRequest>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ServerResponse>* AsyncPassDataRaw(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ServerResponse>* PrepareAsyncPassDataRaw(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* PassImagesRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* AsyncPassImagesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* PrepareAsyncPassImagesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ConfirmResponse>* AsyncGetConnectionRaw(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sluimgstream::ConfirmResponse>* PrepareAsyncGetConnectionRaw(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::sluimgstream::ResponseImages>* SendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sluimgstream::ResponseImages>* AsyncSendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sluimgstream::ResponseImages>* PrepareAsyncSendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientWriterInterface< ::sluimgstream::ProcessedDataRequest>* ReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response) = 0;
+    virtual ::grpc::ClientAsyncWriterInterface< ::sluimgstream::ProcessedDataRequest>* AsyncReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncWriterInterface< ::sluimgstream::ProcessedDataRequest>* PrepareAsyncReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::sluimgstream::ServerResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>> AsyncPassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>>(AsyncPassDataRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReader< ::sluimgstream::ResponseImages>> SendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::sluimgstream::ResponseImages>>(SendImagesRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>> PrepareAsyncPassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>>(PrepareAsyncPassDataRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>> AsyncSendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>>(AsyncSendImagesRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>> PassImages(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>>(PassImagesRaw(context));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>> PrepareAsyncSendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>>(PrepareAsyncSendImagesRaw(context, request, cq));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>> AsyncPassImages(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>>(AsyncPassImagesRaw(context, cq, tag));
+    std::unique_ptr< ::grpc::ClientWriter< ::sluimgstream::ProcessedDataRequest>> ReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response) {
+      return std::unique_ptr< ::grpc::ClientWriter< ::sluimgstream::ProcessedDataRequest>>(ReceiveDataRaw(context, response));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>> PrepareAsyncPassImages(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>>(PrepareAsyncPassImagesRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>> AsyncReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>>(AsyncReceiveDataRaw(context, response, cq, tag));
     }
-    ::grpc::Status GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::sluimgstream::ConfirmResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>> AsyncGetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>>(AsyncGetConnectionRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>> PrepareAsyncGetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>>(PrepareAsyncGetConnectionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>> PrepareAsyncReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>>(PrepareAsyncReceiveDataRaw(context, response, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response, std::function<void(::grpc::Status)>) override;
-      void PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void PassImages(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sluimgstream::ResponseImages,::sluimgstream::ResponseImages>* reactor) override;
-      void GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response, std::function<void(::grpc::Status)>) override;
-      void GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest* request, ::grpc::ClientReadReactor< ::sluimgstream::ResponseImages>* reactor) override;
+      void ReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::ClientWriteReactor< ::sluimgstream::ProcessedDataRequest>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -124,16 +107,14 @@ class SluImgStream final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>* AsyncPassDataRaw(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>* PrepareAsyncPassDataRaw(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* PassImagesRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* AsyncPassImagesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* PrepareAsyncPassImagesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>* AsyncGetConnectionRaw(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>* PrepareAsyncGetConnectionRaw(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_PassData_;
-    const ::grpc::internal::RpcMethod rpcmethod_PassImages_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetConnection_;
+    ::grpc::ClientReader< ::sluimgstream::ResponseImages>* SendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request) override;
+    ::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>* AsyncSendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>* PrepareAsyncSendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientWriter< ::sluimgstream::ProcessedDataRequest>* ReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response) override;
+    ::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>* AsyncReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>* PrepareAsyncReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_SendImages_;
+    const ::grpc::internal::RpcMethod rpcmethod_ReceiveData_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -141,385 +122,244 @@ class SluImgStream final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status PassData(::grpc::ServerContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response);
-    virtual ::grpc::Status PassImages(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* stream);
-    virtual ::grpc::Status GetConnection(::grpc::ServerContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response);
+    virtual ::grpc::Status SendImages(::grpc::ServerContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest* request, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* writer);
+    virtual ::grpc::Status ReceiveData(::grpc::ServerContext* context, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* reader, ::sluimgstream::ResponseDataReceived* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_PassData : public BaseClass {
+  class WithAsyncMethod_SendImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_PassData() {
+    WithAsyncMethod_SendImages() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_PassData() override {
+    ~WithAsyncMethod_SendImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassData(::grpc::ServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/) override {
+    ::grpc::Status SendImages(::grpc::ServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestPassData(::grpc::ServerContext* context, ::sluimgstream::DataRequest* request, ::grpc::ServerAsyncResponseWriter< ::sluimgstream::ServerResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestSendImages(::grpc::ServerContext* context, ::sluimgstream::ReadyToReceiveImagesRequest* request, ::grpc::ServerAsyncWriter< ::sluimgstream::ResponseImages>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_PassImages : public BaseClass {
+  class WithAsyncMethod_ReceiveData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_PassImages() {
+    WithAsyncMethod_ReceiveData() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_PassImages() override {
+    ~WithAsyncMethod_ReceiveData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassImages(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* /*stream*/)  override {
+    ::grpc::Status ReceiveData(::grpc::ServerContext* /*context*/, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* /*reader*/, ::sluimgstream::ResponseDataReceived* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestPassImages(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(1, context, stream, new_call_cq, notification_cq, tag);
+    void RequestReceiveData(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::sluimgstream::ResponseDataReceived, ::sluimgstream::ProcessedDataRequest>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncClientStreaming(1, context, reader, new_call_cq, notification_cq, tag);
     }
   };
+  typedef WithAsyncMethod_SendImages<WithAsyncMethod_ReceiveData<Service > > AsyncService;
   template <class BaseClass>
-  class WithAsyncMethod_GetConnection : public BaseClass {
+  class WithCallbackMethod_SendImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_GetConnection() {
-      ::grpc::Service::MarkMethodAsync(2);
-    }
-    ~WithAsyncMethod_GetConnection() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConnection(::grpc::ServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetConnection(::grpc::ServerContext* context, ::sluimgstream::InitialRequest* request, ::grpc::ServerAsyncResponseWriter< ::sluimgstream::ConfirmResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_PassData<WithAsyncMethod_PassImages<WithAsyncMethod_GetConnection<Service > > > AsyncService;
-  template <class BaseClass>
-  class WithCallbackMethod_PassData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_PassData() {
+    WithCallbackMethod_SendImages() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::sluimgstream::ReadyToReceiveImagesRequest, ::sluimgstream::ResponseImages>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response) { return this->PassData(context, request, response); }));}
-    void SetMessageAllocatorFor_PassData(
-        ::grpc::MessageAllocator< ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
+                   ::grpc::CallbackServerContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest* request) { return this->SendImages(context, request); }));
     }
-    ~WithCallbackMethod_PassData() override {
+    ~WithCallbackMethod_SendImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassData(::grpc::ServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/) override {
+    ::grpc::Status SendImages(::grpc::ServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* PassData(
-      ::grpc::CallbackServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::sluimgstream::ResponseImages>* SendImages(
+      ::grpc::CallbackServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_PassImages : public BaseClass {
+  class WithCallbackMethod_ReceiveData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_PassImages() {
+    WithCallbackMethod_ReceiveData() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackBidiHandler< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>(
+          new ::grpc::internal::CallbackClientStreamingHandler< ::sluimgstream::ProcessedDataRequest, ::sluimgstream::ResponseDataReceived>(
             [this](
-                   ::grpc::CallbackServerContext* context) { return this->PassImages(context); }));
+                   ::grpc::CallbackServerContext* context, ::sluimgstream::ResponseDataReceived* response) { return this->ReceiveData(context, response); }));
     }
-    ~WithCallbackMethod_PassImages() override {
+    ~WithCallbackMethod_ReceiveData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassImages(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* /*stream*/)  override {
+    ::grpc::Status ReceiveData(::grpc::ServerContext* /*context*/, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* /*reader*/, ::sluimgstream::ResponseDataReceived* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerBidiReactor< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* PassImages(
-      ::grpc::CallbackServerContext* /*context*/)
-      { return nullptr; }
+    virtual ::grpc::ServerReadReactor< ::sluimgstream::ProcessedDataRequest>* ReceiveData(
+      ::grpc::CallbackServerContext* /*context*/, ::sluimgstream::ResponseDataReceived* /*response*/)  { return nullptr; }
   };
-  template <class BaseClass>
-  class WithCallbackMethod_GetConnection : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GetConnection() {
-      ::grpc::Service::MarkMethodCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response) { return this->GetConnection(context, request, response); }));}
-    void SetMessageAllocatorFor_GetConnection(
-        ::grpc::MessageAllocator< ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_GetConnection() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConnection(::grpc::ServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetConnection(
-      ::grpc::CallbackServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_PassData<WithCallbackMethod_PassImages<WithCallbackMethod_GetConnection<Service > > > CallbackService;
+  typedef WithCallbackMethod_SendImages<WithCallbackMethod_ReceiveData<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_PassData : public BaseClass {
+  class WithGenericMethod_SendImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_PassData() {
+    WithGenericMethod_SendImages() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_PassData() override {
+    ~WithGenericMethod_SendImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassData(::grpc::ServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/) override {
+    ::grpc::Status SendImages(::grpc::ServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_PassImages : public BaseClass {
+  class WithGenericMethod_ReceiveData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_PassImages() {
+    WithGenericMethod_ReceiveData() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_PassImages() override {
+    ~WithGenericMethod_ReceiveData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassImages(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* /*stream*/)  override {
+    ::grpc::Status ReceiveData(::grpc::ServerContext* /*context*/, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* /*reader*/, ::sluimgstream::ResponseDataReceived* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_GetConnection : public BaseClass {
+  class WithRawMethod_SendImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_GetConnection() {
-      ::grpc::Service::MarkMethodGeneric(2);
-    }
-    ~WithGenericMethod_GetConnection() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConnection(::grpc::ServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_PassData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_PassData() {
+    WithRawMethod_SendImages() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_PassData() override {
+    ~WithRawMethod_SendImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassData(::grpc::ServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/) override {
+    ::grpc::Status SendImages(::grpc::ServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestPassData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestSendImages(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_PassImages : public BaseClass {
+  class WithRawMethod_ReceiveData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_PassImages() {
+    WithRawMethod_ReceiveData() {
       ::grpc::Service::MarkMethodRaw(1);
     }
-    ~WithRawMethod_PassImages() override {
+    ~WithRawMethod_ReceiveData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassImages(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* /*stream*/)  override {
+    ::grpc::Status ReceiveData(::grpc::ServerContext* /*context*/, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* /*reader*/, ::sluimgstream::ResponseDataReceived* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestPassImages(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncBidiStreaming(1, context, stream, new_call_cq, notification_cq, tag);
+    void RequestReceiveData(::grpc::ServerContext* context, ::grpc::ServerAsyncReader< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* reader, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncClientStreaming(1, context, reader, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_GetConnection : public BaseClass {
+  class WithRawCallbackMethod_SendImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_GetConnection() {
-      ::grpc::Service::MarkMethodRaw(2);
-    }
-    ~WithRawMethod_GetConnection() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConnection(::grpc::ServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetConnection(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_PassData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_PassData() {
+    WithRawCallbackMethod_SendImages() {
       ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PassData(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->SendImages(context, request); }));
     }
-    ~WithRawCallbackMethod_PassData() override {
+    ~WithRawCallbackMethod_SendImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassData(::grpc::ServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/) override {
+    ::grpc::Status SendImages(::grpc::ServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* PassData(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* SendImages(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_PassImages : public BaseClass {
+  class WithRawCallbackMethod_ReceiveData : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_PassImages() {
+    WithRawCallbackMethod_ReceiveData() {
       ::grpc::Service::MarkMethodRawCallback(1,
-          new ::grpc::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          new ::grpc::internal::CallbackClientStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context) { return this->PassImages(context); }));
+                   ::grpc::CallbackServerContext* context, ::grpc::ByteBuffer* response) { return this->ReceiveData(context, response); }));
     }
-    ~WithRawCallbackMethod_PassImages() override {
+    ~WithRawCallbackMethod_ReceiveData() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PassImages(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* /*stream*/)  override {
+    ::grpc::Status ReceiveData(::grpc::ServerContext* /*context*/, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* /*reader*/, ::sluimgstream::ResponseDataReceived* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* PassImages(
-      ::grpc::CallbackServerContext* /*context*/)
-      { return nullptr; }
+    virtual ::grpc::ServerReadReactor< ::grpc::ByteBuffer>* ReceiveData(
+      ::grpc::CallbackServerContext* /*context*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
+  typedef Service StreamedUnaryService;
   template <class BaseClass>
-  class WithRawCallbackMethod_GetConnection : public BaseClass {
+  class WithSplitStreamingMethod_SendImages : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_GetConnection() {
-      ::grpc::Service::MarkMethodRawCallback(2,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetConnection(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_GetConnection() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetConnection(::grpc::ServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* GetConnection(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_PassData : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_PassData() {
+    WithSplitStreamingMethod_SendImages() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse>(
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::sluimgstream::ReadyToReceiveImagesRequest, ::sluimgstream::ResponseImages>(
             [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse>* streamer) {
-                       return this->StreamedPassData(context,
+                   ::grpc::ServerSplitStreamer<
+                     ::sluimgstream::ReadyToReceiveImagesRequest, ::sluimgstream::ResponseImages>* streamer) {
+                       return this->StreamedSendImages(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_PassData() override {
+    ~WithSplitStreamingMethod_SendImages() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status PassData(::grpc::ServerContext* /*context*/, const ::sluimgstream::DataRequest* /*request*/, ::sluimgstream::ServerResponse* /*response*/) override {
+    ::grpc::Status SendImages(::grpc::ServerContext* /*context*/, const ::sluimgstream::ReadyToReceiveImagesRequest* /*request*/, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedPassData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sluimgstream::DataRequest,::sluimgstream::ServerResponse>* server_unary_streamer) = 0;
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSendImages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sluimgstream::ReadyToReceiveImagesRequest,::sluimgstream::ResponseImages>* server_split_streamer) = 0;
   };
-  template <class BaseClass>
-  class WithStreamedUnaryMethod_GetConnection : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithStreamedUnaryMethod_GetConnection() {
-      ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse>* streamer) {
-                       return this->StreamedGetConnection(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_GetConnection() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status GetConnection(::grpc::ServerContext* /*context*/, const ::sluimgstream::InitialRequest* /*request*/, ::sluimgstream::ConfirmResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetConnection(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sluimgstream::InitialRequest,::sluimgstream::ConfirmResponse>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_PassData<WithStreamedUnaryMethod_GetConnection<Service > > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_PassData<WithStreamedUnaryMethod_GetConnection<Service > > StreamedService;
+  typedef WithSplitStreamingMethod_SendImages<Service > SplitStreamedService;
+  typedef WithSplitStreamingMethod_SendImages<Service > StreamedService;
 };
 
 }  // namespace sluimgstream

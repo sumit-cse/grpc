@@ -22,9 +22,8 @@
 namespace sluimgstream {
 
 static const char* SluImgStream_method_names[] = {
-  "/sluimgstream.SluImgStream/PassData",
-  "/sluimgstream.SluImgStream/PassImages",
-  "/sluimgstream.SluImgStream/GetConnection",
+  "/sluimgstream.SluImgStream/SendImages",
+  "/sluimgstream.SluImgStream/ReceiveData",
 };
 
 std::unique_ptr< SluImgStream::Stub> SluImgStream::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -34,125 +33,78 @@ std::unique_ptr< SluImgStream::Stub> SluImgStream::NewStub(const std::shared_ptr
 }
 
 SluImgStream::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_PassData_(SluImgStream_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_PassImages_(SluImgStream_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_GetConnection_(SluImgStream_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_SendImages_(SluImgStream_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_ReceiveData_(SluImgStream_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::CLIENT_STREAMING, channel)
   {}
 
-::grpc::Status SluImgStream::Stub::PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::sluimgstream::ServerResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PassData_, context, request, response);
+::grpc::ClientReader< ::sluimgstream::ResponseImages>* SluImgStream::Stub::SendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sluimgstream::ResponseImages>::Create(channel_.get(), rpcmethod_SendImages_, context, request);
 }
 
-void SluImgStream::Stub::async::PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PassData_, context, request, response, std::move(f));
+void SluImgStream::Stub::async::SendImages(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest* request, ::grpc::ClientReadReactor< ::sluimgstream::ResponseImages>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sluimgstream::ResponseImages>::Create(stub_->channel_.get(), stub_->rpcmethod_SendImages_, context, request, reactor);
 }
 
-void SluImgStream::Stub::async::PassData(::grpc::ClientContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PassData_, context, request, response, reactor);
+::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>* SluImgStream::Stub::AsyncSendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sluimgstream::ResponseImages>::Create(channel_.get(), cq, rpcmethod_SendImages_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>* SluImgStream::Stub::PrepareAsyncPassDataRaw(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sluimgstream::ServerResponse, ::sluimgstream::DataRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PassData_, context, request);
+::grpc::ClientAsyncReader< ::sluimgstream::ResponseImages>* SluImgStream::Stub::PrepareAsyncSendImagesRaw(::grpc::ClientContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sluimgstream::ResponseImages>::Create(channel_.get(), cq, rpcmethod_SendImages_, context, request, false, nullptr);
 }
 
-::grpc::ClientAsyncResponseReader< ::sluimgstream::ServerResponse>* SluImgStream::Stub::AsyncPassDataRaw(::grpc::ClientContext* context, const ::sluimgstream::DataRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncPassDataRaw(context, request, cq);
-  result->StartCall();
-  return result;
+::grpc::ClientWriter< ::sluimgstream::ProcessedDataRequest>* SluImgStream::Stub::ReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response) {
+  return ::grpc::internal::ClientWriterFactory< ::sluimgstream::ProcessedDataRequest>::Create(channel_.get(), rpcmethod_ReceiveData_, context, response);
 }
 
-::grpc::ClientReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* SluImgStream::Stub::PassImagesRaw(::grpc::ClientContext* context) {
-  return ::grpc::internal::ClientReaderWriterFactory< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>::Create(channel_.get(), rpcmethod_PassImages_, context);
+void SluImgStream::Stub::async::ReceiveData(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::ClientWriteReactor< ::sluimgstream::ProcessedDataRequest>* reactor) {
+  ::grpc::internal::ClientCallbackWriterFactory< ::sluimgstream::ProcessedDataRequest>::Create(stub_->channel_.get(), stub_->rpcmethod_ReceiveData_, context, response, reactor);
 }
 
-void SluImgStream::Stub::async::PassImages(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sluimgstream::ResponseImages,::sluimgstream::ResponseImages>* reactor) {
-  ::grpc::internal::ClientCallbackReaderWriterFactory< ::sluimgstream::ResponseImages,::sluimgstream::ResponseImages>::Create(stub_->channel_.get(), stub_->rpcmethod_PassImages_, context, reactor);
+::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>* SluImgStream::Stub::AsyncReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncWriterFactory< ::sluimgstream::ProcessedDataRequest>::Create(channel_.get(), cq, rpcmethod_ReceiveData_, context, response, true, tag);
 }
 
-::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* SluImgStream::Stub::AsyncPassImagesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>::Create(channel_.get(), cq, rpcmethod_PassImages_, context, true, tag);
-}
-
-::grpc::ClientAsyncReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* SluImgStream::Stub::PrepareAsyncPassImagesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>::Create(channel_.get(), cq, rpcmethod_PassImages_, context, false, nullptr);
-}
-
-::grpc::Status SluImgStream::Stub::GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::sluimgstream::ConfirmResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetConnection_, context, request, response);
-}
-
-void SluImgStream::Stub::async::GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetConnection_, context, request, response, std::move(f));
-}
-
-void SluImgStream::Stub::async::GetConnection(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetConnection_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>* SluImgStream::Stub::PrepareAsyncGetConnectionRaw(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sluimgstream::ConfirmResponse, ::sluimgstream::InitialRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetConnection_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::sluimgstream::ConfirmResponse>* SluImgStream::Stub::AsyncGetConnectionRaw(::grpc::ClientContext* context, const ::sluimgstream::InitialRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGetConnectionRaw(context, request, cq);
-  result->StartCall();
-  return result;
+::grpc::ClientAsyncWriter< ::sluimgstream::ProcessedDataRequest>* SluImgStream::Stub::PrepareAsyncReceiveDataRaw(::grpc::ClientContext* context, ::sluimgstream::ResponseDataReceived* response, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncWriterFactory< ::sluimgstream::ProcessedDataRequest>::Create(channel_.get(), cq, rpcmethod_ReceiveData_, context, response, false, nullptr);
 }
 
 SluImgStream::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SluImgStream_method_names[0],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< SluImgStream::Service, ::sluimgstream::DataRequest, ::sluimgstream::ServerResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< SluImgStream::Service, ::sluimgstream::ReadyToReceiveImagesRequest, ::sluimgstream::ResponseImages>(
           [](SluImgStream::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::sluimgstream::DataRequest* req,
-             ::sluimgstream::ServerResponse* resp) {
-               return service->PassData(ctx, req, resp);
+             const ::sluimgstream::ReadyToReceiveImagesRequest* req,
+             ::grpc::ServerWriter<::sluimgstream::ResponseImages>* writer) {
+               return service->SendImages(ctx, req, writer);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       SluImgStream_method_names[1],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< SluImgStream::Service, ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>(
+      ::grpc::internal::RpcMethod::CLIENT_STREAMING,
+      new ::grpc::internal::ClientStreamingHandler< SluImgStream::Service, ::sluimgstream::ProcessedDataRequest, ::sluimgstream::ResponseDataReceived>(
           [](SluImgStream::Service* service,
              ::grpc::ServerContext* ctx,
-             ::grpc::ServerReaderWriter<::sluimgstream::ResponseImages,
-             ::sluimgstream::ResponseImages>* stream) {
-               return service->PassImages(ctx, stream);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      SluImgStream_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< SluImgStream::Service, ::sluimgstream::InitialRequest, ::sluimgstream::ConfirmResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](SluImgStream::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::sluimgstream::InitialRequest* req,
-             ::sluimgstream::ConfirmResponse* resp) {
-               return service->GetConnection(ctx, req, resp);
+             ::grpc::ServerReader<::sluimgstream::ProcessedDataRequest>* reader,
+             ::sluimgstream::ResponseDataReceived* resp) {
+               return service->ReceiveData(ctx, reader, resp);
              }, this)));
 }
 
 SluImgStream::Service::~Service() {
 }
 
-::grpc::Status SluImgStream::Service::PassData(::grpc::ServerContext* context, const ::sluimgstream::DataRequest* request, ::sluimgstream::ServerResponse* response) {
+::grpc::Status SluImgStream::Service::SendImages(::grpc::ServerContext* context, const ::sluimgstream::ReadyToReceiveImagesRequest* request, ::grpc::ServerWriter< ::sluimgstream::ResponseImages>* writer) {
   (void) context;
   (void) request;
-  (void) response;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status SluImgStream::Service::PassImages(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sluimgstream::ResponseImages, ::sluimgstream::ResponseImages>* stream) {
+::grpc::Status SluImgStream::Service::ReceiveData(::grpc::ServerContext* context, ::grpc::ServerReader< ::sluimgstream::ProcessedDataRequest>* reader, ::sluimgstream::ResponseDataReceived* response) {
   (void) context;
-  (void) stream;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status SluImgStream::Service::GetConnection(::grpc::ServerContext* context, const ::sluimgstream::InitialRequest* request, ::sluimgstream::ConfirmResponse* response) {
-  (void) context;
-  (void) request;
+  (void) reader;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }

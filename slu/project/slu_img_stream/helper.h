@@ -4,12 +4,12 @@
 #include <string>
 #include <vector>
 
-namespace sluImgStream {
+namespace sluimgstream {
 class ResponseImages;
 
 std::string GetArgVal(int argc, char** argv, std::string arg_string);
 
-void ParseVideo(const std::string& vid_path, std::vector<ResponseImages> images_list);
+void ParseVideo(const std::string& vid_path, std::vector<ResponseImages> *images_list);
 
 }
 

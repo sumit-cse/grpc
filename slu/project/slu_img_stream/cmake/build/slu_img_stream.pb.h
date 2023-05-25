@@ -46,7 +46,7 @@ struct TableStruct_slu_5fimg_5fstream_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -54,55 +54,47 @@ struct TableStruct_slu_5fimg_5fstream_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_slu_5fimg_5fstream_2eproto;
 namespace sluimgstream {
-class ClientRequest;
-struct ClientRequestDefaultTypeInternal;
-extern ClientRequestDefaultTypeInternal _ClientRequest_default_instance_;
-class ConfirmResponse;
-struct ConfirmResponseDefaultTypeInternal;
-extern ConfirmResponseDefaultTypeInternal _ConfirmResponse_default_instance_;
-class DataRequest;
-struct DataRequestDefaultTypeInternal;
-extern DataRequestDefaultTypeInternal _DataRequest_default_instance_;
-class InitialRequest;
-struct InitialRequestDefaultTypeInternal;
-extern InitialRequestDefaultTypeInternal _InitialRequest_default_instance_;
+class ProcessedDataRequest;
+struct ProcessedDataRequestDefaultTypeInternal;
+extern ProcessedDataRequestDefaultTypeInternal _ProcessedDataRequest_default_instance_;
+class ReadyToReceiveImagesRequest;
+struct ReadyToReceiveImagesRequestDefaultTypeInternal;
+extern ReadyToReceiveImagesRequestDefaultTypeInternal _ReadyToReceiveImagesRequest_default_instance_;
+class ResponseDataReceived;
+struct ResponseDataReceivedDefaultTypeInternal;
+extern ResponseDataReceivedDefaultTypeInternal _ResponseDataReceived_default_instance_;
 class ResponseImages;
 struct ResponseImagesDefaultTypeInternal;
 extern ResponseImagesDefaultTypeInternal _ResponseImages_default_instance_;
-class ServerResponse;
-struct ServerResponseDefaultTypeInternal;
-extern ServerResponseDefaultTypeInternal _ServerResponse_default_instance_;
 }  // namespace sluimgstream
 PROTOBUF_NAMESPACE_OPEN
-template<> ::sluimgstream::ClientRequest* Arena::CreateMaybeMessage<::sluimgstream::ClientRequest>(Arena*);
-template<> ::sluimgstream::ConfirmResponse* Arena::CreateMaybeMessage<::sluimgstream::ConfirmResponse>(Arena*);
-template<> ::sluimgstream::DataRequest* Arena::CreateMaybeMessage<::sluimgstream::DataRequest>(Arena*);
-template<> ::sluimgstream::InitialRequest* Arena::CreateMaybeMessage<::sluimgstream::InitialRequest>(Arena*);
+template<> ::sluimgstream::ProcessedDataRequest* Arena::CreateMaybeMessage<::sluimgstream::ProcessedDataRequest>(Arena*);
+template<> ::sluimgstream::ReadyToReceiveImagesRequest* Arena::CreateMaybeMessage<::sluimgstream::ReadyToReceiveImagesRequest>(Arena*);
+template<> ::sluimgstream::ResponseDataReceived* Arena::CreateMaybeMessage<::sluimgstream::ResponseDataReceived>(Arena*);
 template<> ::sluimgstream::ResponseImages* Arena::CreateMaybeMessage<::sluimgstream::ResponseImages>(Arena*);
-template<> ::sluimgstream::ServerResponse* Arena::CreateMaybeMessage<::sluimgstream::ServerResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sluimgstream {
 
 // ===================================================================
 
-class ClientRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.ClientRequest) */ {
+class ReadyToReceiveImagesRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.ReadyToReceiveImagesRequest) */ {
  public:
-  inline ClientRequest() : ClientRequest(nullptr) {}
-  ~ClientRequest() override;
-  explicit constexpr ClientRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ReadyToReceiveImagesRequest() : ReadyToReceiveImagesRequest(nullptr) {}
+  ~ReadyToReceiveImagesRequest() override;
+  explicit constexpr ReadyToReceiveImagesRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ClientRequest(const ClientRequest& from);
-  ClientRequest(ClientRequest&& from) noexcept
-    : ClientRequest() {
+  ReadyToReceiveImagesRequest(const ReadyToReceiveImagesRequest& from);
+  ReadyToReceiveImagesRequest(ReadyToReceiveImagesRequest&& from) noexcept
+    : ReadyToReceiveImagesRequest() {
     *this = ::std::move(from);
   }
 
-  inline ClientRequest& operator=(const ClientRequest& from) {
+  inline ReadyToReceiveImagesRequest& operator=(const ReadyToReceiveImagesRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ClientRequest& operator=(ClientRequest&& from) noexcept {
+  inline ReadyToReceiveImagesRequest& operator=(ReadyToReceiveImagesRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -125,20 +117,20 @@ class ClientRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ClientRequest& default_instance() {
+  static const ReadyToReceiveImagesRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ClientRequest* internal_default_instance() {
-    return reinterpret_cast<const ClientRequest*>(
-               &_ClientRequest_default_instance_);
+  static inline const ReadyToReceiveImagesRequest* internal_default_instance() {
+    return reinterpret_cast<const ReadyToReceiveImagesRequest*>(
+               &_ReadyToReceiveImagesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(ClientRequest& a, ClientRequest& b) {
+  friend void swap(ReadyToReceiveImagesRequest& a, ReadyToReceiveImagesRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(ClientRequest* other) {
+  inline void Swap(ReadyToReceiveImagesRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -151,7 +143,7 @@ class ClientRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ClientRequest* other) {
+  void UnsafeArenaSwap(ReadyToReceiveImagesRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -159,13 +151,13 @@ class ClientRequest final :
 
   // implements Message ----------------------------------------------
 
-  ClientRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ClientRequest>(arena);
+  ReadyToReceiveImagesRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ReadyToReceiveImagesRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ClientRequest& from);
+  void CopyFrom(const ReadyToReceiveImagesRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ClientRequest& from);
+  void MergeFrom(const ReadyToReceiveImagesRequest& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -182,15 +174,15 @@ class ClientRequest final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ClientRequest* other);
+  void InternalSwap(ReadyToReceiveImagesRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sluimgstream.ClientRequest";
+    return "sluimgstream.ReadyToReceiveImagesRequest";
   }
   protected:
-  explicit ClientRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ReadyToReceiveImagesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -207,489 +199,25 @@ class ClientRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kProcessDataFieldNumber = 2,
-    kDataSizeFieldNumber = 1,
+    kReadyClientFlagFieldNumber = 1,
   };
-  // bytes process_data = 2;
-  void clear_process_data();
-  const std::string& process_data() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_process_data(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_process_data();
-  PROTOBUF_NODISCARD std::string* release_process_data();
-  void set_allocated_process_data(std::string* process_data);
+  // bool readyClientFlag = 1;
+  void clear_readyclientflag();
+  bool readyclientflag() const;
+  void set_readyclientflag(bool value);
   private:
-  const std::string& _internal_process_data() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_process_data(const std::string& value);
-  std::string* _internal_mutable_process_data();
+  bool _internal_readyclientflag() const;
+  void _internal_set_readyclientflag(bool value);
   public:
 
-  // uint32 data_size = 1;
-  void clear_data_size();
-  uint32_t data_size() const;
-  void set_data_size(uint32_t value);
-  private:
-  uint32_t _internal_data_size() const;
-  void _internal_set_data_size(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:sluimgstream.ClientRequest)
+  // @@protoc_insertion_point(class_scope:sluimgstream.ReadyToReceiveImagesRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr process_data_;
-  uint32_t data_size_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_slu_5fimg_5fstream_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ServerResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.ServerResponse) */ {
- public:
-  inline ServerResponse() : ServerResponse(nullptr) {}
-  ~ServerResponse() override;
-  explicit constexpr ServerResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  ServerResponse(const ServerResponse& from);
-  ServerResponse(ServerResponse&& from) noexcept
-    : ServerResponse() {
-    *this = ::std::move(from);
-  }
-
-  inline ServerResponse& operator=(const ServerResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ServerResponse& operator=(ServerResponse&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ServerResponse& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ServerResponse* internal_default_instance() {
-    return reinterpret_cast<const ServerResponse*>(
-               &_ServerResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    1;
-
-  friend void swap(ServerResponse& a, ServerResponse& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ServerResponse* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ServerResponse* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ServerResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ServerResponse>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ServerResponse& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ServerResponse& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ServerResponse* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sluimgstream.ServerResponse";
-  }
-  protected:
-  explicit ServerResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kReadFlagFieldNumber = 1,
-  };
-  // uint32 readFlag = 1;
-  void clear_readflag();
-  uint32_t readflag() const;
-  void set_readflag(uint32_t value);
-  private:
-  uint32_t _internal_readflag() const;
-  void _internal_set_readflag(uint32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:sluimgstream.ServerResponse)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  uint32_t readflag_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_slu_5fimg_5fstream_2eproto;
-};
-// -------------------------------------------------------------------
-
-class InitialRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.InitialRequest) */ {
- public:
-  inline InitialRequest() : InitialRequest(nullptr) {}
-  ~InitialRequest() override;
-  explicit constexpr InitialRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  InitialRequest(const InitialRequest& from);
-  InitialRequest(InitialRequest&& from) noexcept
-    : InitialRequest() {
-    *this = ::std::move(from);
-  }
-
-  inline InitialRequest& operator=(const InitialRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline InitialRequest& operator=(InitialRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const InitialRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const InitialRequest* internal_default_instance() {
-    return reinterpret_cast<const InitialRequest*>(
-               &_InitialRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(InitialRequest& a, InitialRequest& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(InitialRequest* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(InitialRequest* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  InitialRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<InitialRequest>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const InitialRequest& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const InitialRequest& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(InitialRequest* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sluimgstream.InitialRequest";
-  }
-  protected:
-  explicit InitialRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kMessageFieldNumber = 1,
-  };
-  // string message = 1;
-  void clear_message();
-  const std::string& message() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_message(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_message();
-  PROTOBUF_NODISCARD std::string* release_message();
-  void set_allocated_message(std::string* message);
-  private:
-  const std::string& _internal_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
-  std::string* _internal_mutable_message();
-  public:
-
-  // @@protoc_insertion_point(class_scope:sluimgstream.InitialRequest)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_slu_5fimg_5fstream_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ConfirmResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.ConfirmResponse) */ {
- public:
-  inline ConfirmResponse() : ConfirmResponse(nullptr) {}
-  ~ConfirmResponse() override;
-  explicit constexpr ConfirmResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  ConfirmResponse(const ConfirmResponse& from);
-  ConfirmResponse(ConfirmResponse&& from) noexcept
-    : ConfirmResponse() {
-    *this = ::std::move(from);
-  }
-
-  inline ConfirmResponse& operator=(const ConfirmResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ConfirmResponse& operator=(ConfirmResponse&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ConfirmResponse& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ConfirmResponse* internal_default_instance() {
-    return reinterpret_cast<const ConfirmResponse*>(
-               &_ConfirmResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    3;
-
-  friend void swap(ConfirmResponse& a, ConfirmResponse& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ConfirmResponse* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ConfirmResponse* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ConfirmResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ConfirmResponse>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ConfirmResponse& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ConfirmResponse& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ConfirmResponse* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sluimgstream.ConfirmResponse";
-  }
-  protected:
-  explicit ConfirmResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kMessageFieldNumber = 1,
-  };
-  // string message = 1;
-  void clear_message();
-  const std::string& message() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_message(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_message();
-  PROTOBUF_NODISCARD std::string* release_message();
-  void set_allocated_message(std::string* message);
-  private:
-  const std::string& _internal_message() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
-  std::string* _internal_mutable_message();
-  public:
-
-  // @@protoc_insertion_point(class_scope:sluimgstream.ConfirmResponse)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+  bool readyclientflag_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_slu_5fimg_5fstream_2eproto;
 };
@@ -743,7 +271,7 @@ class ResponseImages final :
                &_ResponseImages_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    1;
 
   friend void swap(ResponseImages& a, ResponseImages& b) {
     a.Swap(&b);
@@ -857,24 +385,24 @@ class ResponseImages final :
 };
 // -------------------------------------------------------------------
 
-class DataRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.DataRequest) */ {
+class ProcessedDataRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.ProcessedDataRequest) */ {
  public:
-  inline DataRequest() : DataRequest(nullptr) {}
-  ~DataRequest() override;
-  explicit constexpr DataRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline ProcessedDataRequest() : ProcessedDataRequest(nullptr) {}
+  ~ProcessedDataRequest() override;
+  explicit constexpr ProcessedDataRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  DataRequest(const DataRequest& from);
-  DataRequest(DataRequest&& from) noexcept
-    : DataRequest() {
+  ProcessedDataRequest(const ProcessedDataRequest& from);
+  ProcessedDataRequest(ProcessedDataRequest&& from) noexcept
+    : ProcessedDataRequest() {
     *this = ::std::move(from);
   }
 
-  inline DataRequest& operator=(const DataRequest& from) {
+  inline ProcessedDataRequest& operator=(const ProcessedDataRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline DataRequest& operator=(DataRequest&& from) noexcept {
+  inline ProcessedDataRequest& operator=(ProcessedDataRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -897,20 +425,20 @@ class DataRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const DataRequest& default_instance() {
+  static const ProcessedDataRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const DataRequest* internal_default_instance() {
-    return reinterpret_cast<const DataRequest*>(
-               &_DataRequest_default_instance_);
+  static inline const ProcessedDataRequest* internal_default_instance() {
+    return reinterpret_cast<const ProcessedDataRequest*>(
+               &_ProcessedDataRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    2;
 
-  friend void swap(DataRequest& a, DataRequest& b) {
+  friend void swap(ProcessedDataRequest& a, ProcessedDataRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(DataRequest* other) {
+  inline void Swap(ProcessedDataRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -923,7 +451,7 @@ class DataRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(DataRequest* other) {
+  void UnsafeArenaSwap(ProcessedDataRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -931,13 +459,13 @@ class DataRequest final :
 
   // implements Message ----------------------------------------------
 
-  DataRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<DataRequest>(arena);
+  ProcessedDataRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ProcessedDataRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const DataRequest& from);
+  void CopyFrom(const ProcessedDataRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const DataRequest& from);
+  void MergeFrom(const ProcessedDataRequest& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -954,15 +482,15 @@ class DataRequest final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(DataRequest* other);
+  void InternalSwap(ProcessedDataRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sluimgstream.DataRequest";
+    return "sluimgstream.ProcessedDataRequest";
   }
   protected:
-  explicit DataRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit ProcessedDataRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -979,25 +507,187 @@ class DataRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kReadyFlagFieldNumber = 1,
+    kImgDataFieldNumber = 2,
+    kImgSizeFieldNumber = 1,
   };
-  // uint32 readyFlag = 1;
-  void clear_readyflag();
-  uint32_t readyflag() const;
-  void set_readyflag(uint32_t value);
+  // bytes img_data = 2;
+  void clear_img_data();
+  const std::string& img_data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_img_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_img_data();
+  PROTOBUF_NODISCARD std::string* release_img_data();
+  void set_allocated_img_data(std::string* img_data);
   private:
-  uint32_t _internal_readyflag() const;
-  void _internal_set_readyflag(uint32_t value);
+  const std::string& _internal_img_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_img_data(const std::string& value);
+  std::string* _internal_mutable_img_data();
   public:
 
-  // @@protoc_insertion_point(class_scope:sluimgstream.DataRequest)
+  // uint32 img_size = 1;
+  void clear_img_size();
+  uint32_t img_size() const;
+  void set_img_size(uint32_t value);
+  private:
+  uint32_t _internal_img_size() const;
+  void _internal_set_img_size(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sluimgstream.ProcessedDataRequest)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  uint32_t readyflag_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr img_data_;
+  uint32_t img_size_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_slu_5fimg_5fstream_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ResponseDataReceived final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sluimgstream.ResponseDataReceived) */ {
+ public:
+  inline ResponseDataReceived() : ResponseDataReceived(nullptr) {}
+  ~ResponseDataReceived() override;
+  explicit constexpr ResponseDataReceived(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ResponseDataReceived(const ResponseDataReceived& from);
+  ResponseDataReceived(ResponseDataReceived&& from) noexcept
+    : ResponseDataReceived() {
+    *this = ::std::move(from);
+  }
+
+  inline ResponseDataReceived& operator=(const ResponseDataReceived& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ResponseDataReceived& operator=(ResponseDataReceived&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ResponseDataReceived& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ResponseDataReceived* internal_default_instance() {
+    return reinterpret_cast<const ResponseDataReceived*>(
+               &_ResponseDataReceived_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ResponseDataReceived& a, ResponseDataReceived& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ResponseDataReceived* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ResponseDataReceived* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ResponseDataReceived* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ResponseDataReceived>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ResponseDataReceived& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ResponseDataReceived& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ResponseDataReceived* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sluimgstream.ResponseDataReceived";
+  }
+  protected:
+  explicit ResponseDataReceived(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAcknowledgeDataReceiveFieldNumber = 1,
+  };
+  // bool acknowledgeDataReceive = 1;
+  void clear_acknowledgedatareceive();
+  bool acknowledgedatareceive() const;
+  void set_acknowledgedatareceive(bool value);
+  private:
+  bool _internal_acknowledgedatareceive() const;
+  void _internal_set_acknowledgedatareceive(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sluimgstream.ResponseDataReceived)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool acknowledgedatareceive_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_slu_5fimg_5fstream_2eproto;
 };
@@ -1010,211 +700,26 @@ class DataRequest final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// ClientRequest
+// ReadyToReceiveImagesRequest
 
-// uint32 data_size = 1;
-inline void ClientRequest::clear_data_size() {
-  data_size_ = 0u;
+// bool readyClientFlag = 1;
+inline void ReadyToReceiveImagesRequest::clear_readyclientflag() {
+  readyclientflag_ = false;
 }
-inline uint32_t ClientRequest::_internal_data_size() const {
-  return data_size_;
+inline bool ReadyToReceiveImagesRequest::_internal_readyclientflag() const {
+  return readyclientflag_;
 }
-inline uint32_t ClientRequest::data_size() const {
-  // @@protoc_insertion_point(field_get:sluimgstream.ClientRequest.data_size)
-  return _internal_data_size();
+inline bool ReadyToReceiveImagesRequest::readyclientflag() const {
+  // @@protoc_insertion_point(field_get:sluimgstream.ReadyToReceiveImagesRequest.readyClientFlag)
+  return _internal_readyclientflag();
 }
-inline void ClientRequest::_internal_set_data_size(uint32_t value) {
+inline void ReadyToReceiveImagesRequest::_internal_set_readyclientflag(bool value) {
   
-  data_size_ = value;
+  readyclientflag_ = value;
 }
-inline void ClientRequest::set_data_size(uint32_t value) {
-  _internal_set_data_size(value);
-  // @@protoc_insertion_point(field_set:sluimgstream.ClientRequest.data_size)
-}
-
-// bytes process_data = 2;
-inline void ClientRequest::clear_process_data() {
-  process_data_.ClearToEmpty();
-}
-inline const std::string& ClientRequest::process_data() const {
-  // @@protoc_insertion_point(field_get:sluimgstream.ClientRequest.process_data)
-  return _internal_process_data();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ClientRequest::set_process_data(ArgT0&& arg0, ArgT... args) {
- 
- process_data_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sluimgstream.ClientRequest.process_data)
-}
-inline std::string* ClientRequest::mutable_process_data() {
-  std::string* _s = _internal_mutable_process_data();
-  // @@protoc_insertion_point(field_mutable:sluimgstream.ClientRequest.process_data)
-  return _s;
-}
-inline const std::string& ClientRequest::_internal_process_data() const {
-  return process_data_.Get();
-}
-inline void ClientRequest::_internal_set_process_data(const std::string& value) {
-  
-  process_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ClientRequest::_internal_mutable_process_data() {
-  
-  return process_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ClientRequest::release_process_data() {
-  // @@protoc_insertion_point(field_release:sluimgstream.ClientRequest.process_data)
-  return process_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ClientRequest::set_allocated_process_data(std::string* process_data) {
-  if (process_data != nullptr) {
-    
-  } else {
-    
-  }
-  process_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), process_data,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (process_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    process_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sluimgstream.ClientRequest.process_data)
-}
-
-// -------------------------------------------------------------------
-
-// ServerResponse
-
-// uint32 readFlag = 1;
-inline void ServerResponse::clear_readflag() {
-  readflag_ = 0u;
-}
-inline uint32_t ServerResponse::_internal_readflag() const {
-  return readflag_;
-}
-inline uint32_t ServerResponse::readflag() const {
-  // @@protoc_insertion_point(field_get:sluimgstream.ServerResponse.readFlag)
-  return _internal_readflag();
-}
-inline void ServerResponse::_internal_set_readflag(uint32_t value) {
-  
-  readflag_ = value;
-}
-inline void ServerResponse::set_readflag(uint32_t value) {
-  _internal_set_readflag(value);
-  // @@protoc_insertion_point(field_set:sluimgstream.ServerResponse.readFlag)
-}
-
-// -------------------------------------------------------------------
-
-// InitialRequest
-
-// string message = 1;
-inline void InitialRequest::clear_message() {
-  message_.ClearToEmpty();
-}
-inline const std::string& InitialRequest::message() const {
-  // @@protoc_insertion_point(field_get:sluimgstream.InitialRequest.message)
-  return _internal_message();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void InitialRequest::set_message(ArgT0&& arg0, ArgT... args) {
- 
- message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sluimgstream.InitialRequest.message)
-}
-inline std::string* InitialRequest::mutable_message() {
-  std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:sluimgstream.InitialRequest.message)
-  return _s;
-}
-inline const std::string& InitialRequest::_internal_message() const {
-  return message_.Get();
-}
-inline void InitialRequest::_internal_set_message(const std::string& value) {
-  
-  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* InitialRequest::_internal_mutable_message() {
-  
-  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* InitialRequest::release_message() {
-  // @@protoc_insertion_point(field_release:sluimgstream.InitialRequest.message)
-  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void InitialRequest::set_allocated_message(std::string* message) {
-  if (message != nullptr) {
-    
-  } else {
-    
-  }
-  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sluimgstream.InitialRequest.message)
-}
-
-// -------------------------------------------------------------------
-
-// ConfirmResponse
-
-// string message = 1;
-inline void ConfirmResponse::clear_message() {
-  message_.ClearToEmpty();
-}
-inline const std::string& ConfirmResponse::message() const {
-  // @@protoc_insertion_point(field_get:sluimgstream.ConfirmResponse.message)
-  return _internal_message();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void ConfirmResponse::set_message(ArgT0&& arg0, ArgT... args) {
- 
- message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sluimgstream.ConfirmResponse.message)
-}
-inline std::string* ConfirmResponse::mutable_message() {
-  std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:sluimgstream.ConfirmResponse.message)
-  return _s;
-}
-inline const std::string& ConfirmResponse::_internal_message() const {
-  return message_.Get();
-}
-inline void ConfirmResponse::_internal_set_message(const std::string& value) {
-  
-  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* ConfirmResponse::_internal_mutable_message() {
-  
-  return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* ConfirmResponse::release_message() {
-  // @@protoc_insertion_point(field_release:sluimgstream.ConfirmResponse.message)
-  return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void ConfirmResponse::set_allocated_message(std::string* message) {
-  if (message != nullptr) {
-    
-  } else {
-    
-  }
-  message_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), message,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (message_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sluimgstream.ConfirmResponse.message)
+inline void ReadyToReceiveImagesRequest::set_readyclientflag(bool value) {
+  _internal_set_readyclientflag(value);
+  // @@protoc_insertion_point(field_set:sluimgstream.ReadyToReceiveImagesRequest.readyClientFlag)
 }
 
 // -------------------------------------------------------------------
@@ -1294,35 +799,106 @@ inline void ResponseImages::set_allocated_img_data(std::string* img_data) {
 
 // -------------------------------------------------------------------
 
-// DataRequest
+// ProcessedDataRequest
 
-// uint32 readyFlag = 1;
-inline void DataRequest::clear_readyflag() {
-  readyflag_ = 0u;
+// uint32 img_size = 1;
+inline void ProcessedDataRequest::clear_img_size() {
+  img_size_ = 0u;
 }
-inline uint32_t DataRequest::_internal_readyflag() const {
-  return readyflag_;
+inline uint32_t ProcessedDataRequest::_internal_img_size() const {
+  return img_size_;
 }
-inline uint32_t DataRequest::readyflag() const {
-  // @@protoc_insertion_point(field_get:sluimgstream.DataRequest.readyFlag)
-  return _internal_readyflag();
+inline uint32_t ProcessedDataRequest::img_size() const {
+  // @@protoc_insertion_point(field_get:sluimgstream.ProcessedDataRequest.img_size)
+  return _internal_img_size();
 }
-inline void DataRequest::_internal_set_readyflag(uint32_t value) {
+inline void ProcessedDataRequest::_internal_set_img_size(uint32_t value) {
   
-  readyflag_ = value;
+  img_size_ = value;
 }
-inline void DataRequest::set_readyflag(uint32_t value) {
-  _internal_set_readyflag(value);
-  // @@protoc_insertion_point(field_set:sluimgstream.DataRequest.readyFlag)
+inline void ProcessedDataRequest::set_img_size(uint32_t value) {
+  _internal_set_img_size(value);
+  // @@protoc_insertion_point(field_set:sluimgstream.ProcessedDataRequest.img_size)
+}
+
+// bytes img_data = 2;
+inline void ProcessedDataRequest::clear_img_data() {
+  img_data_.ClearToEmpty();
+}
+inline const std::string& ProcessedDataRequest::img_data() const {
+  // @@protoc_insertion_point(field_get:sluimgstream.ProcessedDataRequest.img_data)
+  return _internal_img_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessedDataRequest::set_img_data(ArgT0&& arg0, ArgT... args) {
+ 
+ img_data_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sluimgstream.ProcessedDataRequest.img_data)
+}
+inline std::string* ProcessedDataRequest::mutable_img_data() {
+  std::string* _s = _internal_mutable_img_data();
+  // @@protoc_insertion_point(field_mutable:sluimgstream.ProcessedDataRequest.img_data)
+  return _s;
+}
+inline const std::string& ProcessedDataRequest::_internal_img_data() const {
+  return img_data_.Get();
+}
+inline void ProcessedDataRequest::_internal_set_img_data(const std::string& value) {
+  
+  img_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ProcessedDataRequest::_internal_mutable_img_data() {
+  
+  return img_data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ProcessedDataRequest::release_img_data() {
+  // @@protoc_insertion_point(field_release:sluimgstream.ProcessedDataRequest.img_data)
+  return img_data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ProcessedDataRequest::set_allocated_img_data(std::string* img_data) {
+  if (img_data != nullptr) {
+    
+  } else {
+    
+  }
+  img_data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), img_data,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (img_data_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    img_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sluimgstream.ProcessedDataRequest.img_data)
+}
+
+// -------------------------------------------------------------------
+
+// ResponseDataReceived
+
+// bool acknowledgeDataReceive = 1;
+inline void ResponseDataReceived::clear_acknowledgedatareceive() {
+  acknowledgedatareceive_ = false;
+}
+inline bool ResponseDataReceived::_internal_acknowledgedatareceive() const {
+  return acknowledgedatareceive_;
+}
+inline bool ResponseDataReceived::acknowledgedatareceive() const {
+  // @@protoc_insertion_point(field_get:sluimgstream.ResponseDataReceived.acknowledgeDataReceive)
+  return _internal_acknowledgedatareceive();
+}
+inline void ResponseDataReceived::_internal_set_acknowledgedatareceive(bool value) {
+  
+  acknowledgedatareceive_ = value;
+}
+inline void ResponseDataReceived::set_acknowledgedatareceive(bool value) {
+  _internal_set_acknowledgedatareceive(value);
+  // @@protoc_insertion_point(field_set:sluimgstream.ResponseDataReceived.acknowledgeDataReceive)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

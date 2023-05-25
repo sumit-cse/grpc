@@ -17,55 +17,18 @@
 
 PROTOBUF_PRAGMA_INIT_SEG
 namespace sluimgstream {
-constexpr ClientRequest::ClientRequest(
+constexpr ReadyToReceiveImagesRequest::ReadyToReceiveImagesRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : process_data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , data_size_(0u){}
-struct ClientRequestDefaultTypeInternal {
-  constexpr ClientRequestDefaultTypeInternal()
+  : readyclientflag_(false){}
+struct ReadyToReceiveImagesRequestDefaultTypeInternal {
+  constexpr ReadyToReceiveImagesRequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ClientRequestDefaultTypeInternal() {}
+  ~ReadyToReceiveImagesRequestDefaultTypeInternal() {}
   union {
-    ClientRequest _instance;
+    ReadyToReceiveImagesRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ClientRequestDefaultTypeInternal _ClientRequest_default_instance_;
-constexpr ServerResponse::ServerResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : readflag_(0u){}
-struct ServerResponseDefaultTypeInternal {
-  constexpr ServerResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ServerResponseDefaultTypeInternal() {}
-  union {
-    ServerResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ServerResponseDefaultTypeInternal _ServerResponse_default_instance_;
-constexpr InitialRequest::InitialRequest(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
-struct InitialRequestDefaultTypeInternal {
-  constexpr InitialRequestDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~InitialRequestDefaultTypeInternal() {}
-  union {
-    InitialRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT InitialRequestDefaultTypeInternal _InitialRequest_default_instance_;
-constexpr ConfirmResponse::ConfirmResponse(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : message_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
-struct ConfirmResponseDefaultTypeInternal {
-  constexpr ConfirmResponseDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~ConfirmResponseDefaultTypeInternal() {}
-  union {
-    ConfirmResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ConfirmResponseDefaultTypeInternal _ConfirmResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ReadyToReceiveImagesRequestDefaultTypeInternal _ReadyToReceiveImagesRequest_default_instance_;
 constexpr ResponseImages::ResponseImages(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : img_data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -79,53 +42,44 @@ struct ResponseImagesDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ResponseImagesDefaultTypeInternal _ResponseImages_default_instance_;
-constexpr DataRequest::DataRequest(
+constexpr ProcessedDataRequest::ProcessedDataRequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : readyflag_(0u){}
-struct DataRequestDefaultTypeInternal {
-  constexpr DataRequestDefaultTypeInternal()
+  : img_data_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , img_size_(0u){}
+struct ProcessedDataRequestDefaultTypeInternal {
+  constexpr ProcessedDataRequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~DataRequestDefaultTypeInternal() {}
+  ~ProcessedDataRequestDefaultTypeInternal() {}
   union {
-    DataRequest _instance;
+    ProcessedDataRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DataRequestDefaultTypeInternal _DataRequest_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ProcessedDataRequestDefaultTypeInternal _ProcessedDataRequest_default_instance_;
+constexpr ResponseDataReceived::ResponseDataReceived(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : acknowledgedatareceive_(false){}
+struct ResponseDataReceivedDefaultTypeInternal {
+  constexpr ResponseDataReceivedDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ResponseDataReceivedDefaultTypeInternal() {}
+  union {
+    ResponseDataReceived _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ResponseDataReceivedDefaultTypeInternal _ResponseDataReceived_default_instance_;
 }  // namespace sluimgstream
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_slu_5fimg_5fstream_2eproto[6];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_slu_5fimg_5fstream_2eproto[4];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_slu_5fimg_5fstream_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_slu_5fimg_5fstream_2eproto = nullptr;
 
 const uint32_t TableStruct_slu_5fimg_5fstream_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ClientRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ReadyToReceiveImagesRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ClientRequest, data_size_),
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ClientRequest, process_data_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ServerResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ServerResponse, readflag_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::InitialRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::InitialRequest, message_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ConfirmResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::ConfirmResponse, message_),
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ReadyToReceiveImagesRequest, readyclientflag_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sluimgstream::ResponseImages, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -135,51 +89,53 @@ const uint32_t TableStruct_slu_5fimg_5fstream_2eproto::offsets[] PROTOBUF_SECTIO
   PROTOBUF_FIELD_OFFSET(::sluimgstream::ResponseImages, img_size_),
   PROTOBUF_FIELD_OFFSET(::sluimgstream::ResponseImages, img_data_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::DataRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ProcessedDataRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sluimgstream::DataRequest, readyflag_),
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ProcessedDataRequest, img_size_),
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ProcessedDataRequest, img_data_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ResponseDataReceived, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sluimgstream::ResponseDataReceived, acknowledgedatareceive_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sluimgstream::ClientRequest)},
-  { 8, -1, -1, sizeof(::sluimgstream::ServerResponse)},
-  { 15, -1, -1, sizeof(::sluimgstream::InitialRequest)},
-  { 22, -1, -1, sizeof(::sluimgstream::ConfirmResponse)},
-  { 29, -1, -1, sizeof(::sluimgstream::ResponseImages)},
-  { 37, -1, -1, sizeof(::sluimgstream::DataRequest)},
+  { 0, -1, -1, sizeof(::sluimgstream::ReadyToReceiveImagesRequest)},
+  { 7, -1, -1, sizeof(::sluimgstream::ResponseImages)},
+  { 15, -1, -1, sizeof(::sluimgstream::ProcessedDataRequest)},
+  { 23, -1, -1, sizeof(::sluimgstream::ResponseDataReceived)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ClientRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ServerResponse_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_InitialRequest_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ConfirmResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ReadyToReceiveImagesRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ResponseImages_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_DataRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ProcessedDataRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::sluimgstream::_ResponseDataReceived_default_instance_),
 };
 
 const char descriptor_table_protodef_slu_5fimg_5fstream_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\024slu_img_stream.proto\022\014sluimgstream\"8\n\r"
-  "ClientRequest\022\021\n\tdata_size\030\001 \001(\r\022\024\n\014proc"
-  "ess_data\030\002 \001(\014\"\"\n\016ServerResponse\022\020\n\010read"
-  "Flag\030\001 \001(\r\"!\n\016InitialRequest\022\017\n\007message\030"
-  "\001 \001(\t\"\"\n\017ConfirmResponse\022\017\n\007message\030\001 \001("
-  "\t\"4\n\016ResponseImages\022\020\n\010img_size\030\001 \001(\r\022\020\n"
-  "\010img_data\030\002 \001(\014\" \n\013DataRequest\022\021\n\treadyF"
-  "lag\030\001 \001(\r2\365\001\n\014SluImgStream\022E\n\010PassData\022\031"
-  ".sluimgstream.DataRequest\032\034.sluimgstream"
-  ".ServerResponse\"\000\022N\n\nPassImages\022\034.sluimg"
-  "stream.ResponseImages\032\034.sluimgstream.Res"
-  "ponseImages\"\000(\0010\001\022N\n\rGetConnection\022\034.slu"
-  "imgstream.InitialRequest\032\035.sluimgstream."
-  "ConfirmResponse\"\000b\006proto3"
+  "\n\024slu_img_stream.proto\022\014sluimgstream\"6\n\033"
+  "ReadyToReceiveImagesRequest\022\027\n\017readyClie"
+  "ntFlag\030\001 \001(\010\"4\n\016ResponseImages\022\020\n\010img_si"
+  "ze\030\001 \001(\r\022\020\n\010img_data\030\002 \001(\014\":\n\024ProcessedD"
+  "ataRequest\022\020\n\010img_size\030\001 \001(\r\022\020\n\010img_data"
+  "\030\002 \001(\014\"6\n\024ResponseDataReceived\022\036\n\026acknow"
+  "ledgeDataReceive\030\001 \001(\0102\304\001\n\014SluImgStream\022"
+  "Y\n\nSendImages\022).sluimgstream.ReadyToRece"
+  "iveImagesRequest\032\034.sluimgstream.Response"
+  "Images\"\0000\001\022Y\n\013ReceiveData\022\".sluimgstream"
+  ".ProcessedDataRequest\032\".sluimgstream.Res"
+  "ponseDataReceived\"\000(\001b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_slu_5fimg_5fstream_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_slu_5fimg_5fstream_2eproto = {
-  false, false, 545, descriptor_table_protodef_slu_5fimg_5fstream_2eproto, "slu_img_stream.proto", 
-  &descriptor_table_slu_5fimg_5fstream_2eproto_once, nullptr, 0, 6,
+  false, false, 469, descriptor_table_protodef_slu_5fimg_5fstream_2eproto, "slu_img_stream.proto", 
+  &descriptor_table_slu_5fimg_5fstream_2eproto_once, nullptr, 0, 4,
   schemas, file_default_instances, TableStruct_slu_5fimg_5fstream_2eproto::offsets,
   file_level_metadata_slu_5fimg_5fstream_2eproto, file_level_enum_descriptors_slu_5fimg_5fstream_2eproto, file_level_service_descriptors_slu_5fimg_5fstream_2eproto,
 };
@@ -193,94 +149,71 @@ namespace sluimgstream {
 
 // ===================================================================
 
-class ClientRequest::_Internal {
+class ReadyToReceiveImagesRequest::_Internal {
  public:
 };
 
-ClientRequest::ClientRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ReadyToReceiveImagesRequest::ReadyToReceiveImagesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:sluimgstream.ClientRequest)
+  // @@protoc_insertion_point(arena_constructor:sluimgstream.ReadyToReceiveImagesRequest)
 }
-ClientRequest::ClientRequest(const ClientRequest& from)
+ReadyToReceiveImagesRequest::ReadyToReceiveImagesRequest(const ReadyToReceiveImagesRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  process_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    process_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_process_data().empty()) {
-    process_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_process_data(), 
-      GetArenaForAllocation());
-  }
-  data_size_ = from.data_size_;
-  // @@protoc_insertion_point(copy_constructor:sluimgstream.ClientRequest)
+  readyclientflag_ = from.readyclientflag_;
+  // @@protoc_insertion_point(copy_constructor:sluimgstream.ReadyToReceiveImagesRequest)
 }
 
-inline void ClientRequest::SharedCtor() {
-process_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  process_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-data_size_ = 0u;
+inline void ReadyToReceiveImagesRequest::SharedCtor() {
+readyclientflag_ = false;
 }
 
-ClientRequest::~ClientRequest() {
-  // @@protoc_insertion_point(destructor:sluimgstream.ClientRequest)
+ReadyToReceiveImagesRequest::~ReadyToReceiveImagesRequest() {
+  // @@protoc_insertion_point(destructor:sluimgstream.ReadyToReceiveImagesRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ClientRequest::SharedDtor() {
+inline void ReadyToReceiveImagesRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  process_data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void ClientRequest::ArenaDtor(void* object) {
-  ClientRequest* _this = reinterpret_cast< ClientRequest* >(object);
+void ReadyToReceiveImagesRequest::ArenaDtor(void* object) {
+  ReadyToReceiveImagesRequest* _this = reinterpret_cast< ReadyToReceiveImagesRequest* >(object);
   (void)_this;
 }
-void ClientRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ReadyToReceiveImagesRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void ClientRequest::SetCachedSize(int size) const {
+void ReadyToReceiveImagesRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void ClientRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:sluimgstream.ClientRequest)
+void ReadyToReceiveImagesRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sluimgstream.ReadyToReceiveImagesRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  process_data_.ClearToEmpty();
-  data_size_ = 0u;
+  readyclientflag_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ClientRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ReadyToReceiveImagesRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 data_size = 1;
+      // bool readyClientFlag = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          data_size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // bytes process_data = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_process_data();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          readyclientflag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -308,695 +241,88 @@ failure:
 #undef CHK_
 }
 
-uint8_t* ClientRequest::_InternalSerialize(
+uint8_t* ReadyToReceiveImagesRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.ClientRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.ReadyToReceiveImagesRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 data_size = 1;
-  if (this->_internal_data_size() != 0) {
+  // bool readyClientFlag = 1;
+  if (this->_internal_readyclientflag() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_data_size(), target);
-  }
-
-  // bytes process_data = 2;
-  if (!this->_internal_process_data().empty()) {
-    target = stream->WriteBytesMaybeAliased(
-        2, this->_internal_process_data(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_readyclientflag(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.ClientRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.ReadyToReceiveImagesRequest)
   return target;
 }
 
-size_t ClientRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sluimgstream.ClientRequest)
+size_t ReadyToReceiveImagesRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sluimgstream.ReadyToReceiveImagesRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes process_data = 2;
-  if (!this->_internal_process_data().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_process_data());
-  }
-
-  // uint32 data_size = 1;
-  if (this->_internal_data_size() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_data_size());
+  // bool readyClientFlag = 1;
+  if (this->_internal_readyclientflag() != 0) {
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ClientRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ReadyToReceiveImagesRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ClientRequest::MergeImpl
+    ReadyToReceiveImagesRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ClientRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ReadyToReceiveImagesRequest::GetClassData() const { return &_class_data_; }
 
-void ClientRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ReadyToReceiveImagesRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ClientRequest *>(to)->MergeFrom(
-      static_cast<const ClientRequest &>(from));
+  static_cast<ReadyToReceiveImagesRequest *>(to)->MergeFrom(
+      static_cast<const ReadyToReceiveImagesRequest &>(from));
 }
 
 
-void ClientRequest::MergeFrom(const ClientRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.ClientRequest)
+void ReadyToReceiveImagesRequest::MergeFrom(const ReadyToReceiveImagesRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.ReadyToReceiveImagesRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_process_data().empty()) {
-    _internal_set_process_data(from._internal_process_data());
-  }
-  if (from._internal_data_size() != 0) {
-    _internal_set_data_size(from._internal_data_size());
+  if (from._internal_readyclientflag() != 0) {
+    _internal_set_readyclientflag(from._internal_readyclientflag());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void ClientRequest::CopyFrom(const ClientRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.ClientRequest)
+void ReadyToReceiveImagesRequest::CopyFrom(const ReadyToReceiveImagesRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.ReadyToReceiveImagesRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ClientRequest::IsInitialized() const {
+bool ReadyToReceiveImagesRequest::IsInitialized() const {
   return true;
 }
 
-void ClientRequest::InternalSwap(ClientRequest* other) {
+void ReadyToReceiveImagesRequest::InternalSwap(ReadyToReceiveImagesRequest* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &process_data_, lhs_arena,
-      &other->process_data_, rhs_arena
-  );
-  swap(data_size_, other->data_size_);
+  swap(readyclientflag_, other->readyclientflag_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ClientRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ReadyToReceiveImagesRequest::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
       file_level_metadata_slu_5fimg_5fstream_2eproto[0]);
-}
-
-// ===================================================================
-
-class ServerResponse::_Internal {
- public:
-};
-
-ServerResponse::ServerResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:sluimgstream.ServerResponse)
-}
-ServerResponse::ServerResponse(const ServerResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  readflag_ = from.readflag_;
-  // @@protoc_insertion_point(copy_constructor:sluimgstream.ServerResponse)
-}
-
-inline void ServerResponse::SharedCtor() {
-readflag_ = 0u;
-}
-
-ServerResponse::~ServerResponse() {
-  // @@protoc_insertion_point(destructor:sluimgstream.ServerResponse)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void ServerResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void ServerResponse::ArenaDtor(void* object) {
-  ServerResponse* _this = reinterpret_cast< ServerResponse* >(object);
-  (void)_this;
-}
-void ServerResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void ServerResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void ServerResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:sluimgstream.ServerResponse)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  readflag_ = 0u;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* ServerResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // uint32 readFlag = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          readflag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* ServerResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.ServerResponse)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // uint32 readFlag = 1;
-  if (this->_internal_readflag() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_readflag(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.ServerResponse)
-  return target;
-}
-
-size_t ServerResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sluimgstream.ServerResponse)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // uint32 readFlag = 1;
-  if (this->_internal_readflag() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_readflag());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ServerResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ServerResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ServerResponse::GetClassData() const { return &_class_data_; }
-
-void ServerResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ServerResponse *>(to)->MergeFrom(
-      static_cast<const ServerResponse &>(from));
-}
-
-
-void ServerResponse::MergeFrom(const ServerResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.ServerResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_readflag() != 0) {
-    _internal_set_readflag(from._internal_readflag());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ServerResponse::CopyFrom(const ServerResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.ServerResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ServerResponse::IsInitialized() const {
-  return true;
-}
-
-void ServerResponse::InternalSwap(ServerResponse* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(readflag_, other->readflag_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata ServerResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
-      file_level_metadata_slu_5fimg_5fstream_2eproto[1]);
-}
-
-// ===================================================================
-
-class InitialRequest::_Internal {
- public:
-};
-
-InitialRequest::InitialRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:sluimgstream.InitialRequest)
-}
-InitialRequest::InitialRequest(const InitialRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
-      GetArenaForAllocation());
-  }
-  // @@protoc_insertion_point(copy_constructor:sluimgstream.InitialRequest)
-}
-
-inline void InitialRequest::SharedCtor() {
-message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-InitialRequest::~InitialRequest() {
-  // @@protoc_insertion_point(destructor:sluimgstream.InitialRequest)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void InitialRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void InitialRequest::ArenaDtor(void* object) {
-  InitialRequest* _this = reinterpret_cast< InitialRequest* >(object);
-  (void)_this;
-}
-void InitialRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void InitialRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void InitialRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:sluimgstream.InitialRequest)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  message_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* InitialRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string message = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_message();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "sluimgstream.InitialRequest.message"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* InitialRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.InitialRequest)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sluimgstream.InitialRequest.message");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_message(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.InitialRequest)
-  return target;
-}
-
-size_t InitialRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sluimgstream.InitialRequest)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData InitialRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    InitialRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*InitialRequest::GetClassData() const { return &_class_data_; }
-
-void InitialRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<InitialRequest *>(to)->MergeFrom(
-      static_cast<const InitialRequest &>(from));
-}
-
-
-void InitialRequest::MergeFrom(const InitialRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.InitialRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_message().empty()) {
-    _internal_set_message(from._internal_message());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void InitialRequest::CopyFrom(const InitialRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.InitialRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool InitialRequest::IsInitialized() const {
-  return true;
-}
-
-void InitialRequest::InternalSwap(InitialRequest* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_, lhs_arena,
-      &other->message_, rhs_arena
-  );
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata InitialRequest::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
-      file_level_metadata_slu_5fimg_5fstream_2eproto[2]);
-}
-
-// ===================================================================
-
-class ConfirmResponse::_Internal {
- public:
-};
-
-ConfirmResponse::ConfirmResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:sluimgstream.ConfirmResponse)
-}
-ConfirmResponse::ConfirmResponse(const ConfirmResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_message(), 
-      GetArenaForAllocation());
-  }
-  // @@protoc_insertion_point(copy_constructor:sluimgstream.ConfirmResponse)
-}
-
-inline void ConfirmResponse::SharedCtor() {
-message_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-ConfirmResponse::~ConfirmResponse() {
-  // @@protoc_insertion_point(destructor:sluimgstream.ConfirmResponse)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void ConfirmResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  message_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ConfirmResponse::ArenaDtor(void* object) {
-  ConfirmResponse* _this = reinterpret_cast< ConfirmResponse* >(object);
-  (void)_this;
-}
-void ConfirmResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void ConfirmResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void ConfirmResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:sluimgstream.ConfirmResponse)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  message_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* ConfirmResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string message = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_message();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "sluimgstream.ConfirmResponse.message"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* ConfirmResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.ConfirmResponse)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sluimgstream.ConfirmResponse.message");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_message(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.ConfirmResponse)
-  return target;
-}
-
-size_t ConfirmResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sluimgstream.ConfirmResponse)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string message = 1;
-  if (!this->_internal_message().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_message());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ConfirmResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ConfirmResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ConfirmResponse::GetClassData() const { return &_class_data_; }
-
-void ConfirmResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<ConfirmResponse *>(to)->MergeFrom(
-      static_cast<const ConfirmResponse &>(from));
-}
-
-
-void ConfirmResponse::MergeFrom(const ConfirmResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.ConfirmResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_message().empty()) {
-    _internal_set_message(from._internal_message());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ConfirmResponse::CopyFrom(const ConfirmResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.ConfirmResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ConfirmResponse::IsInitialized() const {
-  return true;
-}
-
-void ConfirmResponse::InternalSwap(ConfirmResponse* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &message_, lhs_arena,
-      &other->message_, rhs_arena
-  );
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata ConfirmResponse::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
-      file_level_metadata_slu_5fimg_5fstream_2eproto[3]);
 }
 
 // ===================================================================
@@ -1220,76 +546,99 @@ void ResponseImages::InternalSwap(ResponseImages* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ResponseImages::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
-      file_level_metadata_slu_5fimg_5fstream_2eproto[4]);
+      file_level_metadata_slu_5fimg_5fstream_2eproto[1]);
 }
 
 // ===================================================================
 
-class DataRequest::_Internal {
+class ProcessedDataRequest::_Internal {
  public:
 };
 
-DataRequest::DataRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+ProcessedDataRequest::ProcessedDataRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:sluimgstream.DataRequest)
+  // @@protoc_insertion_point(arena_constructor:sluimgstream.ProcessedDataRequest)
 }
-DataRequest::DataRequest(const DataRequest& from)
+ProcessedDataRequest::ProcessedDataRequest(const ProcessedDataRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  readyflag_ = from.readyflag_;
-  // @@protoc_insertion_point(copy_constructor:sluimgstream.DataRequest)
+  img_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    img_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_img_data().empty()) {
+    img_data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_img_data(), 
+      GetArenaForAllocation());
+  }
+  img_size_ = from.img_size_;
+  // @@protoc_insertion_point(copy_constructor:sluimgstream.ProcessedDataRequest)
 }
 
-inline void DataRequest::SharedCtor() {
-readyflag_ = 0u;
+inline void ProcessedDataRequest::SharedCtor() {
+img_data_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  img_data_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+img_size_ = 0u;
 }
 
-DataRequest::~DataRequest() {
-  // @@protoc_insertion_point(destructor:sluimgstream.DataRequest)
+ProcessedDataRequest::~ProcessedDataRequest() {
+  // @@protoc_insertion_point(destructor:sluimgstream.ProcessedDataRequest)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void DataRequest::SharedDtor() {
+inline void ProcessedDataRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  img_data_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
-void DataRequest::ArenaDtor(void* object) {
-  DataRequest* _this = reinterpret_cast< DataRequest* >(object);
+void ProcessedDataRequest::ArenaDtor(void* object) {
+  ProcessedDataRequest* _this = reinterpret_cast< ProcessedDataRequest* >(object);
   (void)_this;
 }
-void DataRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void ProcessedDataRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void DataRequest::SetCachedSize(int size) const {
+void ProcessedDataRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void DataRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:sluimgstream.DataRequest)
+void ProcessedDataRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sluimgstream.ProcessedDataRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  readyflag_ = 0u;
+  img_data_.ClearToEmpty();
+  img_size_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* DataRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ProcessedDataRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // uint32 readyFlag = 1;
+      // uint32 img_size = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          readyflag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          img_size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes img_data = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_img_data();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1317,110 +666,305 @@ failure:
 #undef CHK_
 }
 
-uint8_t* DataRequest::_InternalSerialize(
+uint8_t* ProcessedDataRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.DataRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.ProcessedDataRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 readyFlag = 1;
-  if (this->_internal_readyflag() != 0) {
+  // uint32 img_size = 1;
+  if (this->_internal_img_size() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_readyflag(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_img_size(), target);
+  }
+
+  // bytes img_data = 2;
+  if (!this->_internal_img_data().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        2, this->_internal_img_data(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.DataRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.ProcessedDataRequest)
   return target;
 }
 
-size_t DataRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sluimgstream.DataRequest)
+size_t ProcessedDataRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sluimgstream.ProcessedDataRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 readyFlag = 1;
-  if (this->_internal_readyflag() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_readyflag());
+  // bytes img_data = 2;
+  if (!this->_internal_img_data().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_img_data());
+  }
+
+  // uint32 img_size = 1;
+  if (this->_internal_img_size() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_img_size());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DataRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProcessedDataRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    DataRequest::MergeImpl
+    ProcessedDataRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DataRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProcessedDataRequest::GetClassData() const { return &_class_data_; }
 
-void DataRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void ProcessedDataRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<DataRequest *>(to)->MergeFrom(
-      static_cast<const DataRequest &>(from));
+  static_cast<ProcessedDataRequest *>(to)->MergeFrom(
+      static_cast<const ProcessedDataRequest &>(from));
 }
 
 
-void DataRequest::MergeFrom(const DataRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.DataRequest)
+void ProcessedDataRequest::MergeFrom(const ProcessedDataRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.ProcessedDataRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_readyflag() != 0) {
-    _internal_set_readyflag(from._internal_readyflag());
+  if (!from._internal_img_data().empty()) {
+    _internal_set_img_data(from._internal_img_data());
+  }
+  if (from._internal_img_size() != 0) {
+    _internal_set_img_size(from._internal_img_size());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void DataRequest::CopyFrom(const DataRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.DataRequest)
+void ProcessedDataRequest::CopyFrom(const ProcessedDataRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.ProcessedDataRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool DataRequest::IsInitialized() const {
+bool ProcessedDataRequest::IsInitialized() const {
   return true;
 }
 
-void DataRequest::InternalSwap(DataRequest* other) {
+void ProcessedDataRequest::InternalSwap(ProcessedDataRequest* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(readyflag_, other->readyflag_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &img_data_, lhs_arena,
+      &other->img_data_, rhs_arena
+  );
+  swap(img_size_, other->img_size_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata DataRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata ProcessedDataRequest::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
-      file_level_metadata_slu_5fimg_5fstream_2eproto[5]);
+      file_level_metadata_slu_5fimg_5fstream_2eproto[2]);
+}
+
+// ===================================================================
+
+class ResponseDataReceived::_Internal {
+ public:
+};
+
+ResponseDataReceived::ResponseDataReceived(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:sluimgstream.ResponseDataReceived)
+}
+ResponseDataReceived::ResponseDataReceived(const ResponseDataReceived& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  acknowledgedatareceive_ = from.acknowledgedatareceive_;
+  // @@protoc_insertion_point(copy_constructor:sluimgstream.ResponseDataReceived)
+}
+
+inline void ResponseDataReceived::SharedCtor() {
+acknowledgedatareceive_ = false;
+}
+
+ResponseDataReceived::~ResponseDataReceived() {
+  // @@protoc_insertion_point(destructor:sluimgstream.ResponseDataReceived)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void ResponseDataReceived::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void ResponseDataReceived::ArenaDtor(void* object) {
+  ResponseDataReceived* _this = reinterpret_cast< ResponseDataReceived* >(object);
+  (void)_this;
+}
+void ResponseDataReceived::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ResponseDataReceived::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void ResponseDataReceived::Clear() {
+// @@protoc_insertion_point(message_clear_start:sluimgstream.ResponseDataReceived)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  acknowledgedatareceive_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ResponseDataReceived::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool acknowledgeDataReceive = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          acknowledgedatareceive_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ResponseDataReceived::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sluimgstream.ResponseDataReceived)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool acknowledgeDataReceive = 1;
+  if (this->_internal_acknowledgedatareceive() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_acknowledgedatareceive(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sluimgstream.ResponseDataReceived)
+  return target;
+}
+
+size_t ResponseDataReceived::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sluimgstream.ResponseDataReceived)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool acknowledgeDataReceive = 1;
+  if (this->_internal_acknowledgedatareceive() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ResponseDataReceived::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ResponseDataReceived::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ResponseDataReceived::GetClassData() const { return &_class_data_; }
+
+void ResponseDataReceived::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<ResponseDataReceived *>(to)->MergeFrom(
+      static_cast<const ResponseDataReceived &>(from));
+}
+
+
+void ResponseDataReceived::MergeFrom(const ResponseDataReceived& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:sluimgstream.ResponseDataReceived)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_acknowledgedatareceive() != 0) {
+    _internal_set_acknowledgedatareceive(from._internal_acknowledgedatareceive());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ResponseDataReceived::CopyFrom(const ResponseDataReceived& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sluimgstream.ResponseDataReceived)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ResponseDataReceived::IsInitialized() const {
+  return true;
+}
+
+void ResponseDataReceived::InternalSwap(ResponseDataReceived* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(acknowledgedatareceive_, other->acknowledgedatareceive_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ResponseDataReceived::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_slu_5fimg_5fstream_2eproto_getter, &descriptor_table_slu_5fimg_5fstream_2eproto_once,
+      file_level_metadata_slu_5fimg_5fstream_2eproto[3]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace sluimgstream
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::sluimgstream::ClientRequest* Arena::CreateMaybeMessage< ::sluimgstream::ClientRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sluimgstream::ClientRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sluimgstream::ServerResponse* Arena::CreateMaybeMessage< ::sluimgstream::ServerResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sluimgstream::ServerResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sluimgstream::InitialRequest* Arena::CreateMaybeMessage< ::sluimgstream::InitialRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sluimgstream::InitialRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sluimgstream::ConfirmResponse* Arena::CreateMaybeMessage< ::sluimgstream::ConfirmResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sluimgstream::ConfirmResponse >(arena);
+template<> PROTOBUF_NOINLINE ::sluimgstream::ReadyToReceiveImagesRequest* Arena::CreateMaybeMessage< ::sluimgstream::ReadyToReceiveImagesRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sluimgstream::ReadyToReceiveImagesRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sluimgstream::ResponseImages* Arena::CreateMaybeMessage< ::sluimgstream::ResponseImages >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sluimgstream::ResponseImages >(arena);
 }
-template<> PROTOBUF_NOINLINE ::sluimgstream::DataRequest* Arena::CreateMaybeMessage< ::sluimgstream::DataRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sluimgstream::DataRequest >(arena);
+template<> PROTOBUF_NOINLINE ::sluimgstream::ProcessedDataRequest* Arena::CreateMaybeMessage< ::sluimgstream::ProcessedDataRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sluimgstream::ProcessedDataRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sluimgstream::ResponseDataReceived* Arena::CreateMaybeMessage< ::sluimgstream::ResponseDataReceived >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sluimgstream::ResponseDataReceived >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
