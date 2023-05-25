@@ -1,0 +1,143 @@
+Commands -
+***********
+
+1. Pre-requisites ( Create a virtual environment through python and execute the following )
+*******************
+	a. export MY_INSTALL_DIR=$HOME/.local
+	b. mkdir -p $MY_INSTALL_DIR
+	c. export PATH="$MY_INSTALL_DIR/bin:$PATH"
+
+	d. brew install cmake
+	e. brew install autoconf automake libtool pkg-config
+
+	f. git clone --recurse-submodules -b v1.46.3 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+
+
+2. Build and Install gRPC and ProtocolBuffers
+***********************************************
+	a. cd grpc
+	b. mkdir -p cmake/build
+	c. pushd cmake/build
+	d. cmake -DgRPC_INSTALL=ON \
+	      -DgRPC_BUILD_TESTS=OFF \
+	      -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+	      ../..
+	e. make -j
+		In case of error in the command "make -j", try running "make -j 1"
+	f. make install
+	g. popd
+
+
+3. Create the proto file (grpc/slu/project/proto/slu_img_stream.proto)
+**************************
+	a. Define the service and rpc methods inside it.
+		
+		service SluImgStream {
+			rpc PassImages (DataRequest) returns (stream ResponseImages) {}
+			rpc GetConnection (InitialRequest) returns (ConfirmResponse) {}
+		}
+
+	[Note - A server-side streaming RPC where the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages. As you can see in our example, you specify a server-side streaming method by placing the stream keyword before the response type.]
+	
+	b. Define protocol buffer message type for all the request and response types used in our service methods.
+
+		// The request message containing images.
+		message ResponseImages {
+		  uint32 xSize = 1;
+		  uint32 ySize = 2;
+		  string encoding = 3;
+
+		  message Scalar {
+		    uint32 x = 1;
+		    uint32 y = 2;
+		    uint32 z = 3;
+		  }
+		  repeated Scalar matrix = 4;
+		}
+
+		// The response message containing information.
+		message DataRequest {
+		  string readyFlag = 1;
+		}
+
+	c. Generate the gRPC client and server interfaces from our .proto service definition.
+
+		$ cd grpc/slu/project/slu_img_stream
+		$ mkdir -p cmake/build
+		$ pushd cmake/build
+		$ protoc -I ../../../proto --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../../../proto/slu_img_stream.proto
+		$ protoc -I ../../../proto --cpp_out=. ../../../proto/slu_img_stream.proto
+		$ popd
+	[Note - this command generates the following files in your cmake/build directory:
+		slu_img_stream.pb.h, slu_img_stream.pb.cc, slu_img_stream.grpc.pb.h, slu_img_stream.grpc.pb.cc ]
+
+		For python -
+		$ python -m grpc_tools.protoc -I../proto --python_out=. --grpc_python_out=. ../proto/slu_img_stream.proto
+
+
+4. Creating the server
+************************
+	a. Create file grpc/slu/project/slu_img_strea/slu_img_strea_server.cc
+	b. Create a class SluImgStreamImpl class that implements the generated SluImgStream::Service interface
+	c. Implement the service method
+		Status PassImages(ServerContext* serverContext,
+    	              		const sluimgstream::DataRequest* dataRequest,
+    	              		ServerWriter<ResponseImages>* writer) override
+    d. Running a gRPC server to listen for requests from clients and return the service responses.
+    	void RunServer(const std::string& vid_path, 
+	           			const std::string& host_name,
+	           			const std::string& port)
+	e. Create a main that take arguments and call the RunServer method above.
+
+5. Creating the client - For Python
+************************************
+	a. Setup gRPC for python too.
+		i.	python -m pip install --upgrade pip
+		ii.	Create a virtual environment (Put gRPC folder in this)
+				python -m pip install virtualenv
+				virtualenv venv
+				source venv/bin/activate
+				python -m pip install --upgrade pip
+		iii.python -m pip install grpcio
+		iv. python -m pip install grpcio-tools
+		v.	Run from the folder grpc/slu/project/slu_img_strea/
+				python -m grpc_tools.protoc -I../proto --python_out=. --grpc_python_out=. ../proto/slu_img_stream.proto
+		vi. The generated code files are called slu_img_stream_pb2.py and slu_img_stream_pb2_grpc.py
+
+	b. Create the client file "slu_img_stream_client.py"
+
+	c. To call service methods, we first need to create a stub.
+		channel = grpc.insecure_channel('localhost:50051')
+		stub = slu_img_stream_pb2_grpc.SluImgStreamStub(channel)
+
+	d. Store data that is to be sent to server.
+		datarequest = slu_img_stream_pb2.DataRequest(readyFlag = 1)
+
+	e. Receive data
+		i.	A synchronous call to the RPC
+				images = stub.PassImages(datarequest)
+		ii. An asynchronous call to the RPC
+				images_future = stub.PassImages.future(datarequest)
+				images = images_future.result()
+
+		For streaming data -
+		for image in stub.PassImages(datarequest):
+    		image_list.append(image)
+
+
+6. Build your repo (For c++)
+*****************************
+	a. cd slu/project/slu_img_stream
+	b. mkdir -p cmake/build
+	c. pushd cmake/build
+	d. cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
+	e. make -j
+		In case of error in the command "make -j", try running "make -j 1"
+
+
+7. Run client and server
+**************************
+	a. ./slu_img_stream_server.cc
+	b. python slu_img_stream_client.py
+
+
